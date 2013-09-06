@@ -1,0 +1,117 @@
+
+<!-- saved from url=(0017)http://localhost/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=Big5">
+
+    <script type="text/javascript" src="./alf_files/jsapi"></script>
+
+    <script type="text/javascript">
+
+      google.load('visualization', '1', {packages:['table']});
+
+      google.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Name');
+
+        data.addColumn('number', 'Current');
+
+        data.addColumn('boolean', 'Buy or Sell');
+
+        data.addRows([['China Steel Corporation (2002.TW) -Taiwan.TW',   {v: 8000,   f: '$24.70'},  false],['Asia Cement Corporation (1102.TW) -Taiwan.TW',   {v: 8000,   f: '$36.70'},  false],['U-Ming Marine Transpost Corp. (2606.TW) -Taiwan.TW',   {v: 8000,   f: '$45.50'},  false],['Vietnam Manufacturing and Export Processing (9110.TW) -Taiwan.TW',   {v: 8000,   f: '$4.86'},  false],['Test Research (3030.TW) -Taiwan.TW',   {v: 8000,   f: '$41.55'},  false],['National Petroleum Co., Ltd. (9937.TW) -Taiwan.TW',   {v: 8000,   f: '$28.65'},  false],['Kindom Construction Corp. (2520.TW) -Taiwan.TW',   {v: 8000,   f: '$38.25'},  true],['Silitech Technology Corporation (3311.TW) -Taiwan.TW',   {v: 8000,   f: '$49.35'},  false],['China Bills Finance Corporation (2820.TW) -Taiwan.TW',   {v: 8000,   f: '$11.05'},  false],['Phihong Technology Co., Ltd. (2457.TW) -Taiwan.TW',   {v: 8000,   f: '$21.55'},  false],['China Petrochemical Development Corporation (1314.TW) -Taiwan.TW',   {v: 8000,   f: '$15.40'},  false],['TECO IMAGE TWD10 (5438.TWO) -Taiwan OTC.TWO',   {v: 8000,   f: '$10.15'},  false],['MUNSIN GARMENT CO TWD10 (2916.TWO) -Taiwan OTC.TWO',   {v: 8000,   f: '$16.50'},  false],['AXIS CORPORATION TWD10 (6292.TWO) -Taiwan OTC.TWO',   {v: 8000,   f: '$28.80'},  true],['TAIWAN FAMILYMART TWD10 (5903.TWO) -Taiwan OTC.TWO',   {v: 8000,   f: '$143.00'},  true],['AXIS CORPORATION TWD10 (6292.TWO) -Taiwan OTC.TWO',   {v: 8000,   f: '$28.80'},  true]      ]);
+
+
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true});
+
+        
+
+        // Every time the table fires the "select" event, it should call your
+
+		// selectHandler() function.
+
+		google.visualization.events.addListener(table, 'select', selectHandler);
+
+
+
+  function selectHandler() {
+
+    var selection = table.getSelection();
+
+    var message = '';
+
+    for (var i = 0; i < selection.length; i++) {
+
+      var item = selection[i];
+
+      if (item.row != null && item.column != null) {
+
+        var str = data.getFormattedValue(item.row, item.column);
+
+        message += '{row:' + item.row + ',column:' + item.column + '} = ' + str + '\n';
+
+      } else if (item.row != null) {
+
+        var str = data.getFormattedValue(item.row, 0);
+
+        message += '{row:' + item.row + ', column:none}; value (col 0) = ' + str + '\n';
+
+        message = /\d{4}\S{4}/.exec(message)[0];
+
+        message = message.replace(")","");
+
+      } else if (item.column != null) {
+
+        var str = data.getFormattedValue(0, item.column);
+
+        message += '{row:none, column:' + item.column + '}; value (row 0) = ' + str + '\n';
+
+      }
+
+    }
+
+    if (message == '') {
+
+      message = 'nothing';
+
+    }
+
+     alert(message)
+
+    //url = "http://tw.stock.yahoo.com/q/bc?s=" + message
+
+      url = "http://finance.yahoo.com/q/ta?s=" + message + "&t=1y&l=on&z=l&q=l&p=b&a=&c="
+
+    alert(url);
+
+    window.open(url);
+
+  }
+
+
+
+      }
+
+    </script><script src="./alf_files/saved_resource" type="text/javascript"></script><script src="./alf_files/format+zh_TW,default,table.I.js" type="text/javascript"></script><style>.a-b-c{position:relative;display:-moz-inline-box;display:inline-block}* html .a-b-c,*:first-child+html .a-b-c{display:inline}.a-d-e{margin:2px;border:0;padding:0;font-family:Arial,sans-serif;color:#000;background:#ddd url(//ssl.gstatic.com/editor/button-bg.png) repeat-x top left;text-decoration:none;list-style:none;vertical-align:middle;cursor:default;outline:none}.a-d-e-f-g,.a-d-e-h-g{border-style:solid;border-color:#aaa;vertical-align:top}.a-d-e-f-g{margin:0;border-width:1px 0;padding:0}.a-d-e-h-g{-moz-box-orient:vertical;margin:0 -1px;border-width:0 1px;padding:3px 4px;white-space:nowrap}* html .a-d-e-h-g{left:-1px}* html .a-d-e-i .a-d-e-f-g{left:-1px}* html .a-d-e-i .a-d-e-h-g{right:auto}*:first-child+html .a-d-e-h-g{left:-1px}*:first-child+html .a-d-e-i .a-d-e-h-g{left:1px}::root .a-d-e{line-height:0}::root .a-d-e-f-g{line-height:0}::root .a-d-e-h-g{line-height:normal}.a-d-e-j{background-image:none!important;opacity:.3;-moz-opacity:.3;filter:alpha(opacity=30)}.a-d-e-j .a-d-e-f-g,.a-d-e-j .a-d-e-h-g{color:#333!important;border-color:#999!important}* html .a-d-e-j,*:first-child+html .a-d-e-j{margin:2px 1px!important;padding:0 1px!important}.a-d-e-k .a-d-e-f-g,.a-d-e-k .a-d-e-h-g{border-color:#9cf #69e #69e #7af!important}.a-d-e-l,.a-d-e-m{background-color:#bbb;background-position:bottom left}.a-d-e-n .a-d-e-f-g,.a-d-e-n .a-d-e-h-g{border-color:orange}.a-d-e-o-p,.a-d-e-o-p .a-d-e-f-g,.a-d-e-o-p .a-d-e-h-g{margin-right:0}.a-d-e-o-q,.a-d-e-o-q .a-d-e-f-g{margin-left:0}.a-d-e-o-q .a-d-e-h-g{margin-left:0;border-left:1px solid #fff}.a-d-e-o-q.a-d-e-m .a-d-e-h-g{border-left:1px solid #ddd}* html .a-d-e-o-q .a-d-e-h-g,*:first-child+html .a-d-e-o-q .a-d-e-h-g{left:0}.a-r-e{position:relative;margin:2px;border:1px solid #000;padding:2px 6px;font:normal 13px "Trebuchet MS",Tahoma,Arial,sans-serif;color:#fff;background-color:#8c2425;cursor:pointer;outline:none}.a-r-e-j{border-color:#888;color:#888;background-color:#ccc;cursor:default}.a-r-e-k{border-color:#8c2425;color:#8c2425;background-color:#eaa4a5}.a-r-e-l,.a-r-e-s,.a-r-e-m{border-color:#5b4169;color:#5b4169;background-color:#d1a8ea}.a-r-e-n{border-color:#5b4169}.a-r-e-o-p{margin-right:0}.a-r-e-o-q{margin-left:0;border-left:none}.a-e{color:#036;border-color:#036;background-color:#69c}.a-e-j{border-color:#333;color:#333;background-color:#999}.a-e-k{color:#369;border-color:#369;background-color:#9cf}.a-e-l{color:#69c;border-color:#69c}</style><link href="./alf_files/table.css" rel="stylesheet" type="text/css">
+
+  </head>
+
+
+
+  <body>
+
+    <div id="table_div"><div style="position: relative;"><div style="position: relative;"><table class="google-visualization-table-table" cellspacing="0" style="width: 1331px;"><tbody><tr class="google-visualization-table-tr-head"><td class="google-visualization-table-th">&nbsp;</td><td class="google-visualization-table-th google-visualization-table-sorthdr">Name<span class="google-visualization-table-sortind">&#8195;</span></td><td class="google-visualization-table-th google-visualization-table-sorthdr">Current<span class="google-visualization-table-sortind">&#8195;</span></td><td class="google-visualization-table-th google-visualization-table-sorthdr">Buy or Sell<span class="google-visualization-table-sortind">&#8195;</span></td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">1</td><td class="google-visualization-table-td">China Steel Corporation (2002.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$24.70</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">2</td><td class="google-visualization-table-td">Asia Cement Corporation (1102.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$36.70</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">3</td><td class="google-visualization-table-td">U-Ming Marine Transpost Corp. (2606.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$45.50</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">4</td><td class="google-visualization-table-td">Vietnam Manufacturing and Export Processing (9110.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$4.86</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">5</td><td class="google-visualization-table-td">Test Research (3030.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$41.55</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">6</td><td class="google-visualization-table-td">National Petroleum Co., Ltd. (9937.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$28.65</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">7</td><td class="google-visualization-table-td">Kindom Construction Corp. (2520.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$38.25</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10004;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">8</td><td class="google-visualization-table-td">Silitech Technology Corporation (3311.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$49.35</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">9</td><td class="google-visualization-table-td">China Bills Finance Corporation (2820.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$11.05</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">10</td><td class="google-visualization-table-td">Phihong Technology Co., Ltd. (2457.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$21.55</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">11</td><td class="google-visualization-table-td">China Petrochemical Development Corporation (1314.TW) -Taiwan.TW</td><td class="google-visualization-table-td google-visualization-table-td-number">$15.40</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">12</td><td class="google-visualization-table-td">TECO IMAGE TWD10 (5438.TWO) -Taiwan OTC.TWO</td><td class="google-visualization-table-td google-visualization-table-td-number">$10.15</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-even"><td class="google-visualization-table-td google-visualization-table-seq">13</td><td class="google-visualization-table-td">MUNSIN GARMENT CO TWD10 (2916.TWO) -Taiwan OTC.TWO</td><td class="google-visualization-table-td google-visualization-table-td-number">$16.50</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10007;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">14</td><td class="google-visualization-table-td">AXIS CORPORATION TWD10 (6292.TWO) -Taiwan OTC.TWO</td><td class="google-visualization-table-td google-visualization-table-td-number">$28.80</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10004;</td></tr><tr class="google-visualization-table-tr-even google-visualization-table-tr-over"><td class="google-visualization-table-td google-visualization-table-seq">15</td><td class="google-visualization-table-td">TAIWAN FAMILYMART TWD10 (5903.TWO) -Taiwan OTC.TWO</td><td class="google-visualization-table-td google-visualization-table-td-number">$143.00</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10004;</td></tr><tr class="google-visualization-table-tr-odd"><td class="google-visualization-table-td google-visualization-table-seq">16</td><td class="google-visualization-table-td">AXIS CORPORATION TWD10 (6292.TWO) -Taiwan OTC.TWO</td><td class="google-visualization-table-td google-visualization-table-td-number">$28.80</td><td class="google-visualization-table-td google-visualization-table-td-bool">&#10004;</td></tr></tbody></table></div></div></div>
+
+<div style="background-image:url(/gugu.jpg);padding:5px;width:800px;height:600px;border:1px solid black;">
+
+
+
+</div>
+
+  
+
+</body></html>

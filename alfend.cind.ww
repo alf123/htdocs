@@ -1,0 +1,74 @@
+      ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true});
+        
+
+
+  function selectHandler() {
+
+    var selection = table.getSelection();
+
+    var message = '';
+
+    for (var i = 0; i < selection.length; i++) {
+
+      var item = selection[i];
+
+      if (item.row != null && item.column != null) {
+
+        var str = data.getFormattedValue(item.row, item.column);
+
+        message += '{row:' + item.row + ',column:' + item.column + '} = ' + str + '\n';
+
+      } else if (item.row != null) {
+
+        var str = data.getFormattedValue(item.row, 0);
+
+        message += '{row:' + item.row + ', column:none}; value (col 0) = ' + str + '\n';
+
+        message = /\d{4}\S{4}/.exec(message)[0];
+
+        message = message.replace(")","");
+
+      } else if (item.column != null) {
+
+        var str = data.getFormattedValue(0, item.column);
+
+        message += '{row:none, column:' + item.column + '}; value (row 0) = ' + str + '\n';
+
+      }
+
+    }
+
+    if (message == '') {
+
+      message = 'nothing';
+
+    }
+
+     alert(message)
+
+    //url = "http://tw.stock.yahoo.com/q/bc?s=" + message
+
+      url = "http://finance.yahoo.com/q/ta?s=" + message + "&t=6m&l=off&z=l&q=l&p=b&a=&c="
+
+    alert(url);
+
+    window.open(url);
+
+  }
+
+
+
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id='table_div'></div>
+<div style="background-image:url(/gugu.jpg);padding:5px;width:800px;height:600px;border:1px solid black;">
+
+</div>
+  </body>
+</html>

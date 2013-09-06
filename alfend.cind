@@ -1,0 +1,72 @@
+      ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true});
+        
+google.visualization.events.addListener(table, 'select', selectHandler);
+
+
+  function selectHandler() {
+
+    var selection = table.getSelection();
+
+    var message = '';
+
+    for (var i = 0; i < selection.length; i++) {
+
+      var item = selection[i];
+
+      if (item.row != null && item.column != null) {
+
+        var str = data.getFormattedValue(item.row, item.column);
+
+        message += '{row:' + item.row + ',column:' + item.column + '} = ' + str + '\n';
+
+      } else if (item.row != null) {
+
+        var str = data.getFormattedValue(item.row, 0);
+
+        message += '{row:' + item.row + ', column:none}; value (col 0) = ' + str + '\n';
+
+        message = /\d{4}\S{4}/.exec(message)[0];
+
+        message = message.replace(")","");
+
+      } else if (item.column != null) {
+
+        var str = data.getFormattedValue(0, item.column);
+
+        message += '{row:none, column:' + item.column + '}; value (row 0) = ' + str + '\n';
+
+      }
+
+    }
+
+    if (message == '') {
+
+      message = 'nothing';
+
+    }
+
+
+      
+       url =  "http://finance.yahoo.com/echarts?s=" + message + "+Interactive#symbol=1108.tw;range=20120926,20130802;compare=;indicator=bollinger(30,2)+volume;charttype=candlestick;crosshair=cross;ohlcvalues=0;logscale=off;source=undefined;";
+     alert('alf123');
+
+    window.open(url);
+
+  }
+
+
+
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id='table_div'></div>
+<div style="background-image:url(/gugu.jpg);padding:5px;width:800px;height:600px;border:1px solid black;">
+
+</div>
+  </body>
+</html>
